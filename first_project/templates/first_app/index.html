@@ -3,13 +3,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cute Doggie Page</title>
+    <title>Home Page</title>
     <link rel="stylesheet" href="{% static 'css/mystyle.css' %}"/>
 </head>
 <body>
-    <h1>Hello this is a cute doggie!</h1>
-    <img src="{% static 'images/dog.jpg' %}" alt="Uh oh didn't show">
+        <h1>This should be blue!</h1>
+        <h2>This should be red!</h2>
 
+        <div class="djangotwo">
 
-</body>
-</html>
+            {% if access_records %}
+                <table>
+                    <thead>
+                    <th>Site Name</th>
+                    <th>Date Accessed</th>
+                    </thead>
+                {% for acc in access_records %}
+                    <tr>
+                        <td>{{ acc.name }}</td>
+                        <td>{{ acc.date }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+
+            {% else %}
+                <p>NO ACCESS RECORDS FOUND</p>
+
+            {% endif %}
+        </div>
+
+    </body>
+    </html>
